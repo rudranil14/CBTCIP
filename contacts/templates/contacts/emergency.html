@@ -1,0 +1,50 @@
+{% extends 'contacts/base.html' %}
+
+{% block title %}Emergency{% endblock %}
+
+{% block content %}
+
+<div class="text-center">
+
+    <h1 class="fw-bold text-danger">
+        🚑 Emergency Directory
+    </h1>
+
+    <p class="lead">
+        Quick access to important emergency contacts.
+    </p>
+
+    <hr>
+
+    <div class="row mt-4">
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm p-3">
+                <h3>👮</h3>
+                <h5>Police</h5>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm p-3">
+                <h3>🚒</h3>
+                <h5>Fire Brigade</h5>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm p-3">
+                <h3>🚑</h3>
+                <h5>Ambulance</h5>
+            </div>
+        </div>
+
+    </div>
+
+    <a href="{% url 'home' %}" class="btn btn-success mt-4">
+        🏠 Back Home
+    </a>
+
+</div>
+
+{% endblock %}
