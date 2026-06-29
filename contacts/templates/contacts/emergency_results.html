@@ -1,0 +1,67 @@
+{% extends 'contacts/base.html' %}
+
+{% block title %}Results{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2 class="text-danger text-center">
+
+        {{ service }}
+
+    </h2>
+
+    <p class="text-center text-muted">
+
+        {{ city }}, {{ state }}
+
+    </p>
+
+    <hr>
+
+    {% if contacts %}
+
+        {% for contact in contacts %}
+
+            <div class="card shadow-sm mb-3">
+
+                <div class="card-body">
+
+                    <h4>
+
+                        {{ contact.name }}
+
+                    </h4>
+
+                    <p>
+
+                        📞 {{ contact.phone }}
+
+                    </p>
+
+                    <p>
+
+                        {{ contact.description }}
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="alert alert-warning text-center">
+
+            No emergency contacts found.
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

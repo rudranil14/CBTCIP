@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Contact
+from .models import Contact, EmergencyContact
 from .forms import ContactForm
 from .ai import ask_gemini
 
@@ -145,3 +145,47 @@ def assistant(request):
 @login_required
 def emergency(request):
     return render(request, 'contacts/emergency.html')
+
+@login_required
+def emergency_location(request, service):
+
+    return render(
+        request,
+        "contacts/emergency_location.html",
+        {
+            "service": service
+        }
+    )
+
+
+@login_required
+def emergency_results(request, service):
+
+    city = request.GET.get("city", "").strip()
+
+    state = request.GET.get("state", "").strip()
+
+    contacts = EmergencyContact.objects.filter(
+        service=service
+    )
+
+    if state:
+        contacts = contacts.filter(
+            state__iexact=state
+        )
+
+    if city:
+        contacts = contacts.filter(
+            city__iexact=city
+        )
+
+    return render(
+        request,
+        "contacts/emergency_results.html",
+        {
+            "contacts": contacts,
+            "service": service,
+            "city": city,
+            "state": state,
+        },
+    )

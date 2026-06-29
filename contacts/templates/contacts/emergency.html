@@ -4,46 +4,248 @@
 
 {% block content %}
 
-<div class="text-center">
+<div class="container mt-5">
 
-    <h1 class="fw-bold text-danger">
-        🚑 Emergency Directory
-    </h1>
+    <div class="text-center mb-5">
 
-    <p class="lead">
-        Quick access to important emergency contacts.
-    </p>
+        <h1 class="fw-bold text-danger">
 
-    <hr>
+            🚑 Emergency Services
 
-    <div class="row mt-4">
+        </h1>
 
-        <div class="col-md-4 mb-3">
-            <div class="card shadow-sm p-3">
-                <h3>👮</h3>
-                <h5>Police</h5>
+        <p class="lead text-muted">
+
+            Select a service to find emergency contacts near your location.
+
+        </p>
+
+    </div>
+
+    <div class="row g-4">
+
+        <!-- Police -->
+
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 rounded-4 h-100">
+
+                <div class="card-body text-center">
+
+                    <h1>👮</h1>
+
+                    <h4 class="mt-3">
+
+                        Police
+
+                    </h4>
+
+                    <p class="text-muted">
+
+                        Police stations and emergency police numbers.
+
+                    </p>
+
+                    <a href="{% url 'emergency_location' 'Police' %}"
+                       class="btn btn-primary">
+
+                        Find
+
+                    </a>
+
+                </div>
+
             </div>
+
         </div>
 
-        <div class="col-md-4 mb-3">
-            <div class="card shadow-sm p-3">
-                <h3>🚒</h3>
-                <h5>Fire Brigade</h5>
+        <!-- Ambulance -->
+
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 rounded-4 h-100">
+
+                <div class="card-body text-center">
+
+                    <h1>🚑</h1>
+
+                    <h4 class="mt-3">
+
+                        Ambulance
+
+                    </h4>
+
+                    <p class="text-muted">
+
+                        Ambulance services near your city.
+
+                    </p>
+
+                    <a href="{% url 'emergency_location' 'Ambulance' %}"
+                       class="btn btn-danger">
+
+                        Find
+
+                    </a>
+
+                </div>
+
             </div>
+
         </div>
 
-        <div class="col-md-4 mb-3">
-            <div class="card shadow-sm p-3">
-                <h3>🚑</h3>
-                <h5>Ambulance</h5>
+        <!-- Hospital -->
+
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 rounded-4 h-100">
+
+                <div class="card-body text-center">
+
+                    <h1>🏥</h1>
+
+                    <h4 class="mt-3">
+
+                        Hospital
+
+                    </h4>
+
+                    <p class="text-muted">
+
+                        Hospitals near your city.
+
+                    </p>
+
+                    <a href="{% url 'emergency_location' 'Hospital' %}"
+                       class="btn btn-success">
+
+                        Find
+
+                    </a>
+
+                </div>
+
             </div>
+
+        </div>
+
+        <!-- Fire Brigade -->
+
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 rounded-4 h-100">
+
+                <div class="card-body text-center">
+
+                    <h1>🚒</h1>
+
+                    <h4 class="mt-3">
+
+                        Fire Brigade
+
+                    </h4>
+
+                    <p class="text-muted">
+
+                        Fire emergency numbers.
+
+                    </p>
+
+                    <a href="{% url 'emergency_location' 'Fire Brigade' %}"
+                       class="btn btn-warning">
+
+                        Find
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Women -->
+
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 rounded-4 h-100">
+
+                <div class="card-body text-center">
+
+                    <h1>👩</h1>
+
+                    <h4 class="mt-3">
+
+                        Women Helpline
+
+                    </h4>
+
+                    <p class="text-muted">
+
+                        Women safety helpline.
+
+                    </p>
+
+                    <a href="{% url 'emergency_location' 'Women Helpline' %}"
+                       class="btn btn-info">
+
+                        Find
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Child -->
+
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 rounded-4 h-100">
+
+                <div class="card-body text-center">
+
+                    <h1>👶</h1>
+
+                    <h4 class="mt-3">
+
+                        Child Helpline
+
+                    </h4>
+
+                    <p class="text-muted">
+
+                        Child emergency services.
+
+                    </p>
+
+                    <a href="{% url 'emergency_location' 'Child Helpline' %}"
+                       class="btn btn-secondary">
+
+                        Find
+
+                    </a>
+
+                </div>
+
+            </div>
+
         </div>
 
     </div>
 
-    <a href="{% url 'home' %}" class="btn btn-success mt-4">
-        🏠 Back Home
-    </a>
+    <div class="text-center mt-5">
+
+        <a href="{% url 'home' %}"
+           class="btn btn-outline-success">
+
+            🏠 Back Home
+
+        </a>
+
+    </div>
 
 </div>
 
