@@ -4,14 +4,14 @@
 
 {% block content %}
 
-<div class="text-center">
+<div class="text-center mb-4">
 
     <h2 class="fw-bold text-success">
         🤖 ContactMaster AI
     </h2>
 
-    <p class="text-muted mb-4">
-        Your Intelligent Contact Assistant
+    <p class="text-muted">
+        Your Intelligent Personal Contact Assistant
     </p>
 
 </div>
@@ -26,13 +26,12 @@
                 type="text"
                 name="query"
                 class="form-control"
-                placeholder="Try: Find Rahul, Show doctors..."
+                placeholder="Try: Find Rahul, List Contacts, What is Python?"
+                value="{{ query }}"
                 autocomplete="off">
 
             <button class="btn btn-success" type="submit">
-
                 🤖 Ask AI
-
             </button>
 
         </div>
@@ -55,7 +54,7 @@
 
         <div class="col-md-4 mb-2">
             <span class="badge bg-primary p-2">
-                Show Doctors
+                List Contacts
             </span>
         </div>
 
@@ -73,13 +72,13 @@
 
         <div class="col-md-4 mb-2">
             <span class="badge bg-info text-dark p-2">
-                List Contacts
+                What is Python?
             </span>
         </div>
 
         <div class="col-md-4 mb-2">
             <span class="badge bg-secondary p-2">
-                Blood Bank
+                Tell me a joke
             </span>
         </div>
 
@@ -87,82 +86,113 @@
 
     <hr>
 
-    <div class="mt-3">
+    <div class="mt-4">
 
-    <h5>🤖 AI Response</h5>
+        <h5>🤖 AI Response</h5>
 
-    {% if query %}
+        {% if query %}
 
-        <div class="alert alert-success">
+            {% if ai_response %}
 
-            <strong>{{ message }}</strong>
+                <div class="alert alert-info">
 
-        </div>
-
-        {% if result %}
-
-            {% for contact in result %}
-
-                <div class="card mb-3 shadow-sm">
-
-                    <div class="card-body">
-
-                        <h5>{{ contact.name }}</h5>
-
-                        <p class="mb-1">
-                            📞 {{ contact.phone }}
-                        </p>
-
-                        <p class="mb-0">
-                            ✉️
-                            {% if contact.email %}
-                                {{ contact.email }}
-                            {% else %}
-                                Not Available
-                            {% endif %}
-                        </p>
-
-                    </div>
+                    {{ ai_response|linebreaks }}
 
                 </div>
 
-            {% endfor %}
+            {% elif result %}
+
+                <div class="alert alert-success">
+
+                    {{ message }}
+
+                </div>
+
+                {% for contact in result %}
+
+                    <div class="card shadow-sm mb-3">
+
+                        <div class="card-body">
+
+                            <h5 class="fw-bold">
+
+                                {{ contact.name }}
+
+                            </h5>
+
+                            <p class="mb-1">
+
+                                📞 {{ contact.phone }}
+
+                            </p>
+
+                            <p class="mb-0">
+
+                                📧
+
+                                {% if contact.email %}
+
+                                    {{ contact.email }}
+
+                                {% else %}
+
+                                    Not Available
+
+                                {% endif %}
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                {% empty %}
+
+                    <div class="alert alert-danger">
+
+                        😔 No matching contacts found.
+
+                    </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <div class="alert alert-warning">
+
+                    Sorry, I couldn't understand your request.
+
+                </div>
+
+            {% endif %}
 
         {% else %}
 
-            <div class="alert alert-danger">
+            <div class="alert alert-light border">
 
-                😔 Sorry! I couldn't find any contact matching your request.
+                👋 Hello! I'm <strong>ContactMaster AI</strong>.
+
+                <hr>
+
+                I can help you with:
+
+                <ul class="mt-3 mb-0">
+
+                    <li>🔍 Find Rahul</li>
+
+                    <li>📒 List Contacts</li>
+
+                    <li>🚑 Emergency</li>
+
+                    <li>🤖 General AI questions</li>
+
+                </ul>
 
             </div>
 
         {% endif %}
 
-    {% else %}
-
-        <div class="alert alert-light border">
-
-            👋 Hello! I'm ContactMaster AI.
-
-            <br><br>
-
-            Ask me something like:
-
-            <ul class="mt-2">
-
-                <li>Find Rahul</li>
-
-                <li>Search Amit</li>
-
-                <li>Find Rohan</li>
-
-            </ul>
-
-        </div>
-
-    {% endif %}
-
-</div>
+    </div>
 
 </div>
 

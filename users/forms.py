@@ -4,7 +4,13 @@ from django.contrib.auth.forms import UserCreationForm
 
 class RegisterForm(UserCreationForm):
 
-    email = forms.EmailField(required=True)
+    email = forms.EmailField(
+    required=True,
+    widget=forms.EmailInput(attrs={
+        'class': 'form-control',
+        'placeholder': '📧 Email Address'
+    })
+)
 
     class Meta:
         model = User
@@ -24,9 +30,11 @@ class RegisterForm(UserCreationForm):
             }),
 
             'email': forms.EmailInput(attrs={
-                'class':'form-control',
-                'placeholder':'📧 Email Address'
-            }),
+    'class': 'form-control',
+    'placeholder': '📧 Email Address',
+    'autocomplete': 'new-email',
+    'spellcheck': 'false'
+}),
 
         }
 
